@@ -1,0 +1,375 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.BodyClass = "chat-page";
+    ViewBag.IgnoreFooter = true;
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="chat-window">
+                    <div class="chat-cont-left">
+                        <div class="chat-header">
+                            <span>Chats</span>
+                            <a href="javascript:void(0)" class="chat-compose" onclick="openModal()">
+                                <i class="material-icons">control_point</i>
+                            </a>
+                        </div>
+                        <form class="chat-search">
+                            <div class="input-group">
+                                <div class="input-group-prepend" >
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search" id="search">
+                            </div>
+                        </form>
+                        <div class="chat-users-list">
+                            <div class="chat-scroll" id="chat-user-list">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-cont-right">
+                        <div class="chat-header">
+                            <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                            <div class="media">
+                                <div class="media-img-wrap">
+                                    <div class="avatar avatar-online">
+                                        <img id="currentBoxChatImg" alt="User Image" src='/Areas/Admin/Content/img/profile-photos/1.png' class="avatar-img rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="user-name" id="currentBoxChatName">Select a user for chat now!</div>
+                                    <div class="user-status">online</div>
+                                </div>
+                            </div>
+                            <div class="chat-options">
+
+                            </div>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-scroll" id="chat-box">
+                                <ul class="list-unstyled " id="chat-contents">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chat-footer">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="btn-file btn">
+                                        <i class="fa fa-paperclip"></i>
+                                        <input type="file">
+                                    </div>
+                                </div>
+                                <input type="text" class="input-msg-send form-control" placeholder="Type something" id="content">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn msg-send-btn" onclick="sendMsg()"><i class="fab fa-telegram-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
+    <script>
+
+        let selectedContactId = '';
+        let selectedGroupId = '';
+        let chat;
+        const baseUrl = '/chat';
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            chat = $.connection.chatHub;
+            $.connection.hub.start({ transport: 'longPolling' }, function () {
+                console.log('connection started!');
+            });
+            chat.client.broadcastMessage = function (name, message) {
+                console.log("selectedContactId:" + selectedContactId);
+                console.log("selectedGroupId:" + selectedGroupId);
+                console.log("name:" + name);
+                console.log("message:" + message); 
+                if (selectedGroupId || selectedContactId) {
+                    getChatHistoryContent(selectedGroupId, selectedContactId);
+                }
+                getMyChatHistory();
+            };
+            chat.client.SendMessage = function (name, message) {
+                console.log(name + ' ' + message);
+            };
+        });
+
+        $(document).ready(function () {
+            $('#content').keypress(function (e) {
+                if (e.which === 13) {
+                    sendMsg();
+                    e.preventDefault(); // Prevent the default form submission
+                }
+            });
+            dayjs.extend(window.dayjs_plugin_relativeTime)
+            getMyChatHistory();
+
+            $('#search').on('input', function () {
+                let value = $(this).val();
+                if (value === '') {
+                    getMyChatHistory();
+                    return;
+                }
+                $("#chat-user-list a").each(function () {
+                    let text = $(this).text().toLowerCase();
+                    if (text.indexOf(value.toLowerCase()) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+            $('#search-user').on('input', function () {
+                let value = $(this).val();
+                if (value === '') {
+                    getMyContacts();
+                    return;
+                }
+                $("#user-contacts li").each(function () {
+                    let text = $(this).text().toLowerCase();
+                    if (text.indexOf(value.toLowerCase()) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+
+        function openModal() {
+            getMyContacts(() => {
+                $('#data-modal').modal('show');
+            });
+        }
+
+        function getMyContacts(trigger) {
+            $.ajax({
+                url: `/chat/getContacts`,
+                type: 'GET',
+                success: function (result) {
+                    const users = JSON.parse(result?.Data);
+                    let html = '';
+                    users?.forEach(item => {
+                        html += `
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                     <div>
+                                        <img src="${item?.LinkAvatar ?? '/Areas/Admin/Content/img/profile-photos/1.png'}" class="img-circle" style="width: 30px; height: 30px" alt="Profile Picture">
+                                        <span>${item?.FullName}</span>
+                                     </div>
+                                    <button class="btn btn-link" onclick="chatNow('${item?.Id}')">Chat now</button>
+                                </div>
+                            </li>`;
+                    });
+                    $('#user-contacts').html(html);
+
+                    if (trigger) {
+                        trigger();
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        function chatNow(contactId) {
+            $('#data-modal').modal('hide');
+            getChatHistory('', contactId);
+        }
+
+        function sendMsg() {
+            let content = $('#content').val();
+            if (!content) { 
+                Lobibox.alert("error", {
+                    msg: `<p class='text-semibold text-main'> Nhập nội dung tin nhắn </p>` 
+                }); 
+                return;
+            }
+
+            if(selectedContactId === '') { 
+                Lobibox.alert("error", {
+                    msg: `Chọn người nhận tin nhắn`
+                }); 
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("SendMessage", "Chat")',
+                type: 'POST',
+                data: {
+                    groupId: selectedGroupId,
+                    message: {
+                        content: content,
+                        type: "text",
+                        sendTo: selectedContactId
+                    },
+                },
+                success: function (data) {
+                    getChatHistoryContent(data.groupId, selectedContactId);
+                    $('#content').val("");
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function getChatHistory(groupId, contactId) {
+            selectedContactId = contactId;
+            selectedGroupId = groupId;
+            getChatInfo(groupId, contactId);
+            getChatHistoryContent(groupId, contactId);
+            $('#content').focus();
+        }
+
+        function getChatInfo(groupId, contactId) {
+
+            $.ajax({
+                url: `/chat/GetInfo?groupId=${groupId}&contactId=${contactId}`,
+                type: 'GET',
+                success: function (result) {
+                    const data = JSON.parse(result?.Data);
+                    $('#currentBoxChatName').text(data?.FullName);
+                    if (data?.Avatar) {
+                        $('#currentBoxChatImg').attr("src", data?.Avatar);
+                    }else{
+                        $('#currentBoxChatImg').attr("src", '/Areas/Admin/Content/img/profile-photos/1.png');
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        function getChatHistoryContent(groupId, contactId) {
+            $.ajax({
+                url: `/chat/GetMessageByGroup?groupId=${groupId}&contactId=${contactId}`,
+                type: 'GET',
+                success: function (result) {
+                    const msg = JSON.parse(result?.Data);
+                    let html = '';
+                    msg?.forEach(item => {
+                        console.log(item);
+                        if (!item?.IsMe) {
+                            html += `
+
+                             <li class="media received">
+                                <div class="avatar">
+                                    <img src="${item?.UserCreatedBy?.Avatar}" alt="User Image" class="avatar-img rounded-circle">
+                                </div>
+                                <div class="media-body">
+                                    <div class="msg-box">
+                                        <div>
+                                           <p>${item.Content}</p>
+                                            <ul class="chat-msg-info">
+                                                <li>
+                                                    <div class="chat-time">
+                                                        <span>${dayjs(item?.Created).fromNow()}</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            `
+                        }else{
+                            html += `
+                                <li class="media sent">
+                                    <div class="media-body">
+                                        <div class="msg-box">
+                                            <div>
+                                                <p>${item.Content}</p>
+                                                <ul class="chat-msg-info">
+                                                    <li>
+                                                        <div class="chat-time">
+                                                           <span>${dayjs(item?.Created).fromNow()}</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                        }
+                    });
+
+                    $('#chat-contents').html(html);
+                    if (msg?.length > 0) {
+                        scrollToBottom();
+                    }
+
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+
+
+            getMyChatHistory();
+        }
+
+        function getMyChatHistory() {
+            $.ajax({
+                url: '/chat/GetChatHistories',
+                type: 'GET',
+                success: function (result) {
+                    const data = JSON.parse(result?.Data);
+                    let html = '';
+                    data?.forEach(item => {
+                        let avatar = item.Avatar ?? '/Areas/Admin/Content/img/profile-photos/1.png';
+                        html += `
+                            <a href="javascript:void(0);" class="media"  onclick="getChatHistory('${item.Id}')">
+                                <div class="media-img-wrap">
+                                    <div class="avatar avatar-away">
+                                        <img src="${avatar}" alt="User Image" class="avatar-img rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div>
+                                        <div class="user-name">${item.Name}</div>
+                                        <div class="user-last-chat">${item.LastMessage.Content}</div>
+                                    </div>
+                                    <div>
+                                        <div class="last-chat-time block"> ${dayjs(item.LastMessage.Created).fromNow() }</div>
+                                    </div>
+                                </div>
+                            </a>
+                         `
+                    });
+                    $('#chat-user-list').html(html);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function scrollToBottom() {
+            let scrollableDiv = document.getElementById('chat-box');
+            let bottomElement = scrollableDiv.lastElementChild;
+            bottomElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    </script>
+}

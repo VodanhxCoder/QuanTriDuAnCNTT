@@ -1,0 +1,40 @@
+﻿@using BELibrary.Entity
+@model List<Medicine>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pharmacy</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title"><b>Pharmacy</b></h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
+                    <div class="profile-widget">
+                        <div class="pro-content">
+                            <h3 class="title pb-4">
+                                <a href="#" tabindex="-1">@item.Name</a>
+                            </h3> 
+                        </div>
+                    </div>
+                </div>
+            }
+        </div> 
+    </div>
+</div>

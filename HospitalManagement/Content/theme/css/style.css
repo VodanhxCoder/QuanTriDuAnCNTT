@@ -1,0 +1,1971 @@
+/*
+Author       : xAI
+Template Name: Doccure - Enhanced Bootstrap Template
+Version      : 1.0
+Created      : April 26, 2025
+Description  : Modernized CSS for a professional healthcare website
+*/
+
+/*============================
+ [Table of CSS]
+
+1. General
+2. Table
+3. Bootstrap Classes
+4. Avatar
+5. Select2
+6. Nav Tabs
+7. Modal
+8. Components
+9. Slick Slider
+10. Focus Label
+11. Header
+12. Mobile Menu
+13. Footer
+14. Login
+15. Home
+16. Search
+17. Doctor Profile
+18. Booking
+19. Checkout
+20. Booking Success
+21. Invoice View
+22. Schedule Timings
+23. Doctor Dashboard
+24. Patient Profile
+25. Add Billing
+26. Chat
+27. Doctor Profile Settings
+28. Calendar
+29. Patient Dashboard
+30. Profile Settings
+31. Appointment List
+32. Reviews
+33. Voice Call
+34. Video Call
+35. Outgoing Call
+36. Incoming Call
+37. Terms and Conditions
+38. Blog
+39. Blog Details
+40. Blog Grid
+41. Map List & Grid
+42. Loader
+43. Product
+44. Cart
+45. Slider
+46. Account
+47. Responsive
+
+========================================*/
+
+/*-----------------
+	1. General
+-----------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #222;
+    font-weight: 600;
+}
+
+.h1, h1 {
+    font-size: 2.25rem;
+}
+
+.h2, h2 {
+    font-size: 1.875rem;
+}
+
+.h3, h3 {
+    font-size: 1.5rem;
+}
+
+.h4, h4 {
+    font-size: 1.125rem;
+}
+
+.h5, h5 {
+    font-size: 1rem;
+}
+
+.h6, h6 {
+    font-size: 0.875rem;
+}
+
+a {
+    color: #4a90e2;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #357abd;
+        text-decoration: none;
+    }
+
+    a:focus, a:active {
+        outline: none;
+    }
+
+input, button, a {
+    transition: all 0.3s ease;
+}
+
+    button:focus {
+        outline: none;
+    }
+
+    input[type="text"], input[type="password"] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.9375rem;
+    min-height: 46px;
+    color: #333;
+}
+
+    .form-control:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+        outline: none;
+    }
+
+    .form-control::placeholder {
+        color: #858585;
+        font-size: 0.875rem;
+    }
+
+.container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.content {
+    padding: 30px 0;
+}
+
+/*-----------------
+	2. Table
+-----------------------*/
+
+.table {
+    color: #333;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+.table-bordered {
+    border: 1px solid #e2e5e8;
+}
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #e2e5e8;
+    }
+
+.table thead th {
+    border-bottom: 1px solid #e2e5e8;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #e2e5e8;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table td, .table th {
+    padding: 10px 15px;
+    vertical-align: middle;
+}
+
+.card-table .table td, .card-table .table th {
+    white-space: nowrap;
+}
+
+/*-----------------
+	3. Bootstrap Classes
+-----------------------*/
+
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+    color: #fff;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: #357abd;
+        border-color: #357abd;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+    .btn-secondary:hover,
+    .btn-secondary:focus,
+    .btn-secondary:active {
+        background-color: #5a6268;
+        border-color: #5a6268;
+    }
+
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #218838;
+    }
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #138496;
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #333;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #e6e6e6;
+    color: #333;
+}
+
+.btn-outline-primary {
+    border-color: #4a90e2;
+    color: #4a90e2;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #4a90e2;
+        color: #fff;
+    }
+
+.card {
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    margin-bottom: 1.875rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e5e8;
+    background-color: #fff;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e2e5e8;
+    background-color: #fff;
+}
+
+.badge-primary {
+    background-color: #4a90e2;
+}
+
+.badge-success {
+    background-color: #28a745;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+}
+
+.dropdown-menu {
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f8f9fa;
+    color: #4a90e2;
+}
+
+/*-----------------
+	4. Avatar
+-----------------------*/
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+}
+
+    .avatar > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+.avatar-title {
+    width: 100%;
+    height: 100%;
+    background-color: #4a90e2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.avatar-away::before,
+.avatar-offline::before,
+.avatar-online::before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    content: '';
+    border: 2px solid #fff;
+}
+
+.avatar-online::before {
+    background-color: #28a745;
+}
+
+.avatar-offline::before {
+    background-color: #dc3545;
+}
+
+.avatar-away::before {
+    background-color: #ffc107;
+}
+
+.avatar-xs {
+    width: 1.65rem;
+    height: 1.65rem;
+}
+
+.avatar-sm {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.avatar-lg {
+    width: 3.75rem;
+    height: 3.75rem;
+}
+
+.avatar-xl {
+    width: 5rem;
+    height: 5rem;
+}
+
+.avatar-xxl {
+    width: 8rem;
+    height: 8rem;
+}
+
+.avatar-group {
+    display: inline-flex;
+}
+
+    .avatar-group .avatar + .avatar {
+        margin-left: -0.75rem;
+    }
+
+/*-----------------
+	5. Select2
+-----------------------*/
+
+.select2-container .select2-selection--single {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    height: 46px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #333;
+    font-size: 0.9375rem;
+    line-height: 44px;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 44px;
+    right: 10px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #4a90e2;
+}
+
+.select2-dropdown {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+}
+
+/*-----------------
+	6. Nav Tabs
+-----------------------*/
+
+.nav-tabs {
+    border-bottom: 1px solid #e2e5e8;
+}
+
+    .nav-tabs > li > a {
+        color: #666;
+        padding: 10px 20px;
+        border-radius: 8px 8px 0 0;
+    }
+
+        .nav-tabs > li > a:hover,
+        .nav-tabs > li > a:focus {
+            background-color: #f8f9fa;
+            color: #4a90e2;
+        }
+
+    .nav-tabs.nav-tabs-solid {
+        background-color: #f8f9fa;
+        border: none;
+    }
+
+        .nav-tabs.nav-tabs-solid > li > a {
+            color: #333;
+        }
+
+            .nav-tabs.nav-tabs-solid > li > a.active {
+                background-color: #4a90e2;
+                color: #fff;
+            }
+
+.tab-content {
+    padding: 20px 0;
+}
+
+/*-----------------
+	7. Modal
+-----------------------*/
+
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #e2e5e8;
+}
+
+.modal-footer {
+    padding: 1.25rem;
+    border-top: 1px solid #e2e5e8;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+}
+
+/*-----------------
+	8. Components
+-----------------------*/
+
+.comp-header {
+    margin-bottom: 1.5rem;
+}
+
+.line {
+    background-color: #4a90e2;
+    height: 3px;
+    width: 60px;
+    margin: 10px auto;
+}
+
+.progress-sm {
+    height: 6px;
+}
+
+.progress-md {
+    height: 8px;
+}
+
+.progress-lg {
+    height: 12px;
+}
+
+/*-----------------
+	9. Slick Slider
+-----------------------*/
+
+.slick-slider {
+    position: relative;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.slick-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 0;
+}
+
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 20px;
+        color: #fff;
+        opacity: 0.75;
+    }
+
+.slick-prev {
+    left: 10px;
+}
+
+    .slick-prev:before {
+        content: '\f053';
+    }
+
+.slick-next {
+    right: 10px;
+}
+
+    .slick-next:before {
+        content: '\f054';
+    }
+
+    .slick-prev:hover,
+    .slick-next:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+.slick-dots {
+    text-align: center;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+    .slick-dots li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+        .slick-dots li button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            border: none;
+            font-size: 0;
+            cursor: pointer;
+        }
+
+        .slick-dots li.slick-active button {
+            background: #4a90e2;
+        }
+
+/*-----------------
+	10. Focus Label
+-----------------------*/
+
+.form-focus {
+    position: relative;
+}
+
+    .form-focus .focus-label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        font-size: 0.875rem;
+        color: #858585;
+        pointer-events: none;
+        transition: all 0.2s ease;
+    }
+
+    .form-focus.focused .focus-label,
+    .form-focus .form-control:focus ~ .focus-label {
+        top: -10px;
+        font-size: 0.75rem;
+        background: #fff;
+        padding: 0 5px;
+        color: #4a90e2;
+    }
+
+/*-----------------
+	11. Header
+-----------------------*/
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #e2e5e8;
+    height: 80px;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 160px;
+}
+
+.main-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .main-nav > li {
+        margin-right: 30px;
+    }
+
+        .main-nav > li > a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 80px;
+        }
+
+            .main-nav > li.active > a,
+            .main-nav > li > a:hover {
+                color: #4a90e2;
+            }
+
+.header-navbar-rht {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+    .header-navbar-rht li {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+    }
+
+.header-contact-img i {
+    font-size: 24px;
+    color: #4a90e2;
+}
+
+.header-contact-detail p.contact-info-header {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/*-----------------
+	12. Mobile Menu
+-----------------------*/
+
+#mobile_btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.main-menu-wrapper {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1040;
+}
+
+/*-----------------
+	13. Footer
+-----------------------*/
+
+.footer {
+    background: #1e5c92;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer-widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .footer-widget ul li {
+        margin-bottom: 10px;
+    }
+
+        .footer-widget ul li a {
+            color: #fff;
+            font-size: 0.875rem;
+        }
+
+            .footer-widget ul li a:hover {
+                color: #4a90e2;
+            }
+
+.footer-contact-info {
+    font-size: 0.875rem;
+}
+
+    .footer-contact-info .footer-address {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-contact-info i {
+        margin-right: 10px;
+    }
+
+.footer-bottom {
+    border-top: 1px solid #2a6aa6;
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .footer-bottom .copyright-text p {
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+.social-icon ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .social-icon ul li {
+        margin-right: 15px;
+    }
+
+        .social-icon ul li a {
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+            .social-icon ul li a:hover {
+                color: #4a90e2;
+            }
+
+/*-----------------
+	14. Login
+-----------------------*/
+
+.login-right {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-header h3 {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+/*-----------------
+	15. Home
+-----------------------*/
+
+.section-search {
+    background: linear-gradient(135deg, #4a90e2, #50c9c3);
+    padding: 80px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.banner-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.banner-header p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.search-box form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.search-box .form-control {
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+}
+
+.search-box .search-btn {
+    border-radius: 25px;
+    background: #fff;
+    color: #4a90e2;
+    font-weight: 600;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .search-box .search-btn:hover {
+        background: #f1f1f1;
+        transform: translateY(-2px);
+    }
+
+.form-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+}
+
+.section-home-tile {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    .section-header h2 {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .section-header .sub-title {
+        font-size: 1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 10px auto;
+    }
+
+.doctor-book-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .doctor-book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .doctor-book-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+.doctor-book-card-content {
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .doctor-book-card-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+.book-btn1 {
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+    .book-btn1:hover {
+        background: #357abd;
+    }
+
+.section-specialities {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.specialities-slider .speicality-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .specialities-slider .speicality-item:hover {
+        transform: translateY(-5px);
+    }
+
+.speicality-img {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+    .speicality-img img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .speicality-img span {
+        position: absolute;
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+        color: #4a90e2;
+    }
+
+.speicality-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.section-doctor {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.about-content {
+    padding-right: 20px;
+}
+
+    .about-content p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .about-content a {
+        font-weight: 500;
+        color: #4a90e2;
+    }
+
+        .about-content a:hover {
+            text-decoration: underline;
+        }
+
+.doctor-slider .profile-widget {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .doctor-slider .profile-widget:hover {
+        transform: translateY(-5px);
+    }
+
+.doc-img {
+    position: relative;
+}
+
+    .doc-img img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+.fav-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+    .fav-btn:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+.pro-content {
+    padding: 20px;
+}
+
+    .pro-content h3.title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .pro-content .speciality {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+.rating i.filled {
+    color: #f1c40f;
+}
+
+.available-info li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .available-info li i {
+        color: #4a90e2;
+    }
+
+.control .view-btn,
+.control .book-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.control .view-btn {
+    background: #f1f1f1;
+    color: #333;
+}
+
+    .control .view-btn:hover {
+        background: #e0e0e0;
+    }
+
+.control .book-btn {
+    background: #4a90e2;
+    color: #fff;
+}
+
+    .control .book-btn:hover {
+        background: #357abd;
+    }
+
+.section-features {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.feature-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.section-blogs {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.blog.grid-blog {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .blog.grid-blog:hover {
+        transform: translateY(-5px);
+    }
+
+.blog-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .post-author img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+.blog-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.blog-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.view-all .btn-primary {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/*-----------------
+	16. Search
+-----------------------*/
+
+.breadcrumb-bar {
+    background: #1e5c92;
+    padding: 15px 0;
+    color: #fff;
+}
+
+.breadcrumb-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+.page-breadcrumb ol {
+    background: transparent;
+    font-size: 0.875rem;
+    padding: 0;
+}
+
+    .page-breadcrumb ol li a,
+    .page-breadcrumb ol li.active {
+        color: #fff;
+    }
+
+/*-----------------
+	17. Doctor Profile
+-----------------------*/
+
+.doctor-widget {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.doc-info-left {
+    display: flex;
+}
+
+.doc-info-right {
+    margin-left: auto;
+    max-width: 205px;
+}
+
+.doctor-img {
+    flex: 0 0 150px;
+    margin-right: 20px;
+}
+
+    .doctor-img img {
+        border-radius: 8px;
+        width: 100%;
+    }
+
+.doc-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.doc-speciality,
+.doc-location {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/*-----------------
+	18. Booking
+-----------------------*/
+
+.schedule-widget {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.schedule-header h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.day-slot li {
+    text-align: center;
+    width: 14.28%;
+}
+
+    .day-slot li span {
+        font-size: 1rem;
+    }
+
+.time-slot li .timing {
+    background: #e9e9e9;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+}
+
+    .time-slot li .timing:hover {
+        background: #fff;
+    }
+
+    .time-slot li .timing.selected {
+        background: #4a90e2;
+        color: #fff;
+    }
+
+/*-----------------
+	19. Checkout
+-----------------------*/
+
+.info-widget {
+    border-bottom: 1px solid #e2e5e8;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.payment-radio {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+    .payment-radio .checkmark {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #dcdcdc;
+        border-radius: 50%;
+    }
+
+    .payment-radio input:checked ~ .checkmark {
+        border-color: #4a90e2;
+    }
+
+    .payment-radio .checkmark::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        background: #4a90e2;
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    .payment-radio input:checked ~ .checkmark::after {
+        opacity: 1;
+    }
+
+/*-----------------
+	20. Booking Success
+-----------------------*/
+
+.success-cont {
+    text-align: center;
+}
+
+    .success-cont i {
+        width: 60px;
+        height: 60px;
+        background: #4a90e2;
+        color: #fff;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .success-cont h3 {
+        font-size: 1.5rem;
+    }
+
+/*-----------------
+	21. Invoice View
+-----------------------*/
+
+.invoice-content {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.invoice-item .invoice-logo img {
+    max-height: 50px;
+}
+
+.invoice-item .invoice-text h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/*-----------------
+	22. Schedule Timings
+-----------------------*/
+
+.doc-slot-list {
+    background: #dc3545;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 15px;
+    margin: 10px 10px 0 0;
+}
+
+/*-----------------
+	23. Doctor Dashboard
+-----------------------*/
+
+.dash-widget {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.circle-bar {
+    margin-right: 15px;
+}
+
+/*-----------------
+	24. Patient Profile
+-----------------------*/
+
+.profile-sidebar {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+}
+
+.profile-info-widget {
+    display: flex;
+    align-items: center;
+}
+
+.booking-doc-img img {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+/*-----------------
+	25. Add Billing
+-----------------------*/
+
+.biller-info, .billing-info {
+    margin-bottom: 15px;
+}
+
+/*-----------------
+	26. Chat
+-----------------------*/
+
+.chat-cont-left {
+    border-right: 1px solid #e2e5e8;
+    flex: 0 0 35%;
+    max-width: 35%;
+}
+
+.chat-cont-right {
+    flex: 0 0 65%;
+    max-width: 65%;
+}
+
+.chat-header {
+    background: #fff;
+    border-bottom: 1px solid #e2e5e8;
+    padding: 15px;
+}
+
+.chat-body {
+    background: #f5f5f6;
+    padding: 15px;
+}
+
+.chat-footer .form-control {
+    border-radius: 25px;
+    background: #f5f5f6;
+}
+
+/*-----------------
+	27. Doctor Profile Settings
+-----------------------*/
+
+.change-photo-btn {
+    background: #4a90e2;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/*-----------------
+	28. Calendar
+-----------------------*/
+
+.fc-toolbar h2 {
+    font-size: 1.125rem;
+}
+
+.fc-event {
+    background: #4a90e2;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/*-----------------
+	29. Patient Dashboard
+-----------------------*/
+
+.dashboard-menu ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: #666;
+}
+
+    .dashboard-menu ul li.active a,
+    .dashboard-menu ul li a:hover {
+        color: #4a90e2;
+    }
+
+/*-----------------
+	30. Profile Settings
+-----------------------*/
+
+.change-avatar .profile-img img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+/*-----------------
+	31. Appointment List
+-----------------------*/
+
+.appointments .appointment-list {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/*-----------------
+	32. Reviews
+-----------------------*/
+
+.review-listing > ul li {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    padding: 20px;
+}
+
+/*-----------------
+	33. Voice Call
+-----------------------*/
+
+.call-box .call-wrapper {
+    text-align: center;
+    padding: 20px;
+}
+
+.call-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+/*-----------------
+	34. Video Call
+-----------------------*/
+
+.video-window .fixed-header {
+    padding: 0;
+}
+
+/*-----------------
+	35. Outgoing Call
+-----------------------*/
+
+.call-box .call-items .call-item a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+}
+
+/*-----------------
+	36. Incoming Call
+-----------------------*/
+
+.incoming-btns {
+    margin-top: 20px;
+}
+
+/*-----------------
+	37. Terms and Conditions
+-----------------------*/
+
+.terms-text h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/*-----------------
+	38. Blog
+-----------------------*/
+
+.blog {
+    background: #fff;
+    border: 1px solid #e2e5e8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.blog-image img {
+    border-radius: 8px;
+}
+
+/*-----------------
+	39. Blog Details
+-----------------------*/
+
+.blog-view .blog-title {
+    font-size: 1.5rem;
+}
+
+/*-----------------
+	40. Blog Grid
+-----------------------*/
+
+.grid-blog .blog-title {
+    font-size: 1.125rem;
+}
+
+/*-----------------
+	41. Map List & Grid
+-----------------------*/
+
+.map-right {
+    position: fixed;
+    right: 0;
+    top: 115px;
+    bottom: 0;
+    padding-right: 20px;
+}
+
+/*-----------------
+	42. Loader
+-----------------------*/
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader span {
+    width: 50px;
+    height: 50px;
+    background: #4a90e2;
+    border-radius: 50%;
+    animation: loader 1.3s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/*-----------------
+	43. Product
+-----------------------*/
+
+.product-custom .cart-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4a90e2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-----------------
+	44. Cart
+-----------------------*/
+
+.view-cart-header .shopping-cart {
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/*-----------------
+	45. Slider
+-----------------------*/
+
+.carousel-item {
+    height: 75vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-caption {
+    top: 20%;
+    text-align: left;
+}
+
+/*-----------------
+	46. Account
+-----------------------*/
+
+.account-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+/*-----------------
+	47. Responsive
+-----------------------*/
+
+@media (min-width: 992px) {
+    .main-nav li .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .main-nav li:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 1199px) {
+    .chat-cont-left {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .chat-cont-right {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 991px) {
+    #mobile_btn {
+        display: block;
+    }
+
+    .main-menu-wrapper {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 260px;
+        height: 100%;
+        background: #1e5c92;
+        transition: all 0.4s ease;
+        z-index: 1060;
+    }
+
+    .main-nav {
+        flex-direction: column;
+    }
+
+        .main-nav > li > a {
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+    .sidebar-overlay.opened {
+        display: block;
+    }
+
+    .search-box form {
+        flex-direction: column;
+    }
+
+    .search-box .search-location,
+    .search-box .search-info,
+    .search-box .search-btn {
+        width: 100%;
+        flex: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-search,
+    .section-home-tile,
+    .section-specialities,
+    .section-doctor,
+    .section-features,
+    .section-blogs {
+        padding: 40px 0;
+    }
+
+    .banner-header h1 {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .doctor-book-card img {
+        height: 180px;
+    }
+
+    .doc-img img {
+        height: 200px;
+    }
+
+    .blog-image img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 575px) {
+    .header-nav {
+        height: 60px;
+    }
+
+    .banner-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .doctor-book-card img {
+        height: 160px;
+    }
+
+    .doc-img img {
+        height: 180px;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+}
