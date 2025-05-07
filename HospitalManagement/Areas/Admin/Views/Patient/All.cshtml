@@ -3,29 +3,36 @@
 @{
     ViewBag.Title = ViewBag.Feature + " " + ViewBag.Element;
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-
 }
 
-@section CSS{
+@section CSS {
     <!--DataTables [ OPTIONAL ]-->
     <link href="/Areas/Admin/Content/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="/Areas/Admin/Content/plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">
+    <!--Lobibox CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/lobibox@1.2.7/dist/css/lobibox.min.css" rel="stylesheet">
 }
+
 <!--List-->
 <div class="panel">
     <div class="panel-body">
-
         <div class="pad-btm form-inline">
             <div class="row">
                 <div class="col-sm-6 table-toolbar-left">
                     <a class="btn btn-success" href="/Admin/Patient/Create">
                         <i class="demo-pli-add"></i> Thêm
                     </a>
+                    <a class="btn btn-primary" href="@Url.Action("ExportToExcel", "PatientImportExport", new { area = "Admin" })">
+                        <i class="fa fa-download"></i> Export to Excel
+                    </a>
+                    <button class="btn btn-info" onclick="$('#importModal').modal('show');">
+                        <i class="fa fa-upload"></i> Import from Excel
+                    </button>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped" id="tblData">
+            <table class="table-striped table" id="tblData">
                 <thead>
                     <tr>
                         <th class="text-center">STT</th>
@@ -50,9 +57,15 @@
                             <td class="text-center">@(item.value.Gender ? "Nam" : "Nữ")</td>
                             <td class="text-center">@item.value.Phone</td>
                             <td class="text-center">
-                                <button class="btn btn-info btn-sm btn-icon  add-tooltip" data-original-title="Xem bệnh án" data-container="body" title="Xem bệnh án" onclick="openRecord('@item.value.Id')"><i class="fa fa-calendar  icon-lg"></i></button>
-                                <button class="btn btn-info btn-sm btn-icon  add-tooltip" data-original-title="Sửa thông tin" data-container="body" onclick="openEditing('@item.value.Id')"><i class="demo-psi-pen-5 icon-lg"></i></button>
-                                <button class="btn btn-danger btn-sm btn-icon  add-tooltip" data-original-title="Xóa bệnh nhân" data-container="body" onclick="deleteElement('@item.value.Id','@item.value.FullName')"><i class="demo-psi-recycling icon-lg"></i></button>
+                                <button class="btn btn-info btn-sm btn-icon add-tooltip" data-original-title="Xem bệnh án" data-container="body" title="Xem bệnh án" onclick="openRecord('@item.value.Id')">
+                                    <i class="fa fa-calendar icon-lg"></i>
+                                </button>
+                                <button class="btn btn-info btn-sm btn-icon add-tooltip" data-original-title="Sửa thông tin" data-container="body" onclick="openEditing('@item.value.Id')">
+                                    <i class="demo-psi-pen-5 icon-lg"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm btn-icon add-tooltip" data-original-title="Xóa bệnh nhân" data-container="body" onclick="deleteElement('@item.value.Id','@item.value.FullName')">
+                                    <i class="demo-psi-recycling icon-lg"></i>
+                                </button>
                             </td>
                         </tr>
                     }
@@ -65,11 +78,37 @@
     </div>
 </div>
 
+<!-- Modal Import Excel -->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importModalLabel">Import Patients from Excel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="importForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="excelFile">Chọn file Excel:</label>
+                        <input type="file" class="form-control-file" id="excelFile" name="excelFile" accept=".xlsx" required>
+                    </div>
+                    <p><a href="@Url.Action("DownloadImportTemplate", "PatientImportExport", new { area = "Admin" })">Tải file mẫu Excel</a></p>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <!--DataTables [ OPTIONAL ]-->
     <script src="/Areas/Admin/Content/plugins/datatables/media/js/jquery.dataTables.js"></script>
     <script src="/Areas/Admin/Content/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
     <script src="/Areas/Admin/Content/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <!--Lobibox JS-->
+    <script src="https://cdn.jsdelivr.net/npm/lobibox@1.2.7/dist/js/lobibox.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -81,7 +120,7 @@
                     },
                     "search": "Tìm kiếm:",
                     "emptyTable": "Dữ liệu trống",
-                    "zeroRecords": "Không tìm thấy bản nghi nào",
+                    "zeroRecords": "Không tìm thấy bản ghi nào",
                     "decimal": "",
                     "info": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
                     "infoEmpty": "Hiển thị 0 đến 0 của 0 bản ghi",
@@ -101,7 +140,36 @@
                     targets: [0, 1, 2, 3, 4, 5, 6]
                 }]
             });
+
+            // Xử lý form import Excel
+            $("#importForm").on("submit", function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "/Admin/PatientImportExport/ImportFromExcel",
+                    type: "POST",
+                    data: formData,
+                    success: function (response) {
+                        if (response.status) {
+                            Lobibox.notify("success", { msg: response.mess });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Lobibox.notify("error", { msg: response.mess });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("AJAX error (import):", status, error);
+                        Lobibox.notify("error", { msg: "Có lỗi xảy ra khi gửi yêu cầu import: " + error });
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            });
         });
+
         const baseUrl = "/admin/Patient";
 
         //Edit
@@ -109,6 +177,7 @@
             notify.loading();
             window.location.href = `${baseUrl}/update?id=${id}`;
         }
+
         //Edit
         function openRecord(id) {
             notify.loading();
@@ -133,7 +202,6 @@
                         (jqXHR, textStatus) => {
                             const mess = `Request failed: ${textStatus}`;
                             notify.push(mess, notify.EType.DANGER);
-
                         }
                     );
                 }

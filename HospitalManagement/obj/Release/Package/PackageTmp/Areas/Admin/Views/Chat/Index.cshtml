@@ -1,0 +1,363 @@
+﻿@using HospitalManagement.Core.Dto
+@{
+    ViewBag.Feature = "Tin nhắn";
+    ViewBag.Element = "Danh sách";
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.IsPageFixedBar = true;
+
+}
+
+@section CSS
+{
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+    </style>
+
+}
+
+@section FixBar{
+    <!--Fixedbar-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="page-fixedbar-container">
+        <div class="page-fixedbar-content">
+            <div class="nano">
+                <div class="nano-content">
+                    <div class="pad-all bord-btm" style="display: flex; gap: 5px">
+                        <input type="text" placeholder="Search or start new chat" class="form-control" id="search">
+                        <button class="btn btn-icon" data-original-title="Search" onclick="openModal()" type="button"><i class="demo-pli-add-user-star"></i></button>
+                    </div>
+
+                    <div class="chat-user-list" id="chat-user-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--End Fixedbar-->
+    <!--Page content-->
+    <!--===================================================-->
+
+}
+
+<div class="panel">
+    <div class="media-block pad-all bord-btm">
+        <div class="pull-right">
+            <div class="btn-group dropdown">
+                <a href="#" class="dropdown-toggle btn btn-trans" data-toggle="dropdown" aria-expanded="false"><i class="pci-ver-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right" style="">
+                    <li><a href="#"><i class="icon-lg icon-fw demo-psi-pen-5"></i> Edit</a></li>
+                    <li><a href="#"><i class="icon-lg icon-fw demo-pli-recycling"></i> Remove</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="media-left">
+            <img class="img-circle img-xs" src="~/Areas/Admin/Content/img/profile-photos/1.png" id="currentBoxChatImg" alt="Profile Picture">
+        </div>
+        <div class="media-body">
+            <p class="mar-no text-main text-bold text-lg" id="currentBoxChatName">Select a user for chat now!</p>
+        </div>
+    </div>
+
+    <div class="nano" style="height: 60vh">
+        <div class="nano-content">
+            <div class="panel-body chat-body media-block" id="chat-body-msg" style="min-height: 100%;">
+            </div>
+        </div>
+    </div>
+    <div class="pad-all">
+        <div class="input-group">
+            <input type="text" placeholder="Type your message" name="content" id="content" class="form-control form-control-trans">
+            <span class="input-group-btn">
+                <button class="btn btn-icon add-tooltip" data-original-title="Send" onclick="sendMsg()" type="button"><i class="demo-pli-paper-plane icon-lg"></i></button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--Create-->
+<div class="modal fade" id="data-modal" role="dialog" tabindex="-1" aria-labelledby="create" aria-hidden="true">
+    <div class="modal-dialog" style="padding: 5% 0;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                <h4 class="modal-title">Danh bạ</h4>
+            </div>
+            <div style="padding: 5px; padding-bottom: 10px">
+                <input type="text" placeholder="Search or start new chat" class="form-control" id="search-user">
+            </div>
+
+            <ul class="list-group " id="user-contacts">
+            </ul>
+            <!--Modal footer-->
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
+    <script>
+
+        let selectedContactId = '';
+        let selectedGroupId = '';
+        let chat;
+        const baseUrl = '/admin/chat';
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            chat = $.connection.chatHub;
+            $.connection.hub.start({ transport: 'longPolling' }, function () {
+                console.log('connection started!');
+            });
+            chat.client.broadcastMessage = function (name, message) {
+                console.log("selectedContactId:" + selectedContactId);
+                console.log("selectedGroupId:" + selectedGroupId);
+                console.log("name:" + name);
+                console.log("message:" + message);
+                if (selectedGroupId || selectedContactId) {
+                    getChatHistoryContent(selectedGroupId, selectedContactId);
+                }
+                getMyChatHistory();
+            };
+            chat.client.SendMessage = function (name, message) {
+                console.log(name + ' ' + message);
+            };
+        });
+
+        $(document).ready(function () {
+            $('#content').keypress(function (e) {
+                if (e.which === 13) {
+                    sendMsg();
+                    e.preventDefault(); // Prevent the default form submission
+                }
+            });
+            getMyChatHistory();
+            dayjs.extend(window.dayjs_plugin_relativeTime);
+
+
+            $('#search').on('input', function () {
+                let value = $(this).val();
+                if (value === '') {
+                    getMyChatHistory();
+                    return;
+                }
+                $("#chat-user-list a").each(function () {
+                    let text = $(this).text().toLowerCase();
+                    if (text.indexOf(value.toLowerCase()) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+            $('#search-user').on('input', function () {
+                let value = $(this).val();
+                if (value === '') {
+                    getMyContacts();
+                    return;
+                }
+                $("#user-contacts li").each(function () {
+                    let text = $(this).text().toLowerCase();
+                    if (text.indexOf(value.toLowerCase()) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+
+        });
+
+        function openModal() {
+            getMyContacts(() => {
+                $('#data-modal').modal('show');
+            });
+        }
+
+        function getMyContacts(trigger) {
+            $.ajax({
+                url: `/admin/chat/getContacts`,
+                type: 'GET',
+                success: function (result) {
+                    const users = JSON.parse(result?.Data);
+                    let html = '';
+                    users?.forEach(item => {
+                        html += `
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                     <div>
+                                        <img src="${item?.LinkAvatar ?? '/Areas/Admin/Content/img/profile-photos/1.png'}" class="img-circle" style="width: 30px; height: 30px" alt="Profile Picture">
+                                        <span>${item?.FullName}</span>
+                                     </div>
+                                    <button class="btn btn-link" onclick="chatNow('${item?.Id}')">Chat now</button>
+                                </div>
+                            </li>`;
+                    });
+                    $('#user-contacts').html(html);
+                    if (trigger) {
+                        trigger();
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        function chatNow(contactId) {
+            $('#data-modal').modal('hide');
+            getChatHistory('', contactId);
+        }
+
+        function sendMsg() {
+            let content = $('#content').val();
+            if (!content) {
+                notify.push('Nhập nội dung tin nhắn', notify.EType.DANGER);
+                return;
+            }
+
+            if(selectedContactId === '') {
+                notify.push('Chọn người nhận tin nhắn', notify.EType.DANGER);
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("SendMessage", "Chat")',
+                type: 'POST',
+                data: {
+                    groupId: selectedGroupId,
+                    message: {
+                        content: content,
+                        type: "text",
+                        sendTo: selectedContactId
+                    },
+                },
+                success: function (data) {
+                    getChatHistoryContent(data.groupId, selectedContactId);
+                    $('#content').val("");
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function getChatHistory(groupId, contactId) {
+            selectedContactId = contactId;
+            selectedGroupId = groupId;
+            getChatInfo(groupId, contactId);
+            getChatHistoryContent(groupId, contactId);
+            $('#content').focus();
+        }
+
+        function getChatInfo(groupId, contactId) {
+
+            $.ajax({
+                url: `/admin/chat/GetInfo?groupId=${groupId}&contactId=${contactId}`,
+                type: 'GET',
+                success: function (result) {
+                    const data = JSON.parse(result?.Data);
+                    $('#currentBoxChatName').text(data?.FullName);
+                    if (data?.Avatar) {
+                        $('#currentBoxChatImg').attr("src", data?.Avatar);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        function getChatHistoryContent(groupId, contactId) {
+            $.ajax({
+                url: `/admin/chat/GetMessageByGroup?groupId=${groupId}&contactId=${contactId}`,
+                type: 'GET',
+                success: function (result) {
+                    const msg = JSON.parse(result?.Data);
+                    let html = '';
+                    msg?.forEach(item => {
+                        let chatClass = item?.IsMe === true ? 'chat-me' : 'chat-user';
+                        html += `
+                            <div class="${chatClass}">
+                                <div class="media-left">
+                                    <img src="${item?.UserCreatedBy?.Avatar}" class="img-circle img-sm" alt="Profile Picture">
+                                </div>
+                                <div class="media-body">
+                                    <div>
+                                        <p>${item.Content} <small>${dayjs(item?.Created).fromNow()}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    $('.chat-body').html(html);
+                    if (msg?.length > 0) {
+                        scrollToBottom();
+                    }
+
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+
+
+            getMyChatHistory();
+        }
+
+        function getMyChatHistory() {
+            $.ajax({
+                url: '/admin/chat/GetChatHistories',
+                type: 'GET',
+                success: function (result) {
+                    const data = JSON.parse(result?.Data);
+                    let html = '';
+                    data?.forEach(item => {
+                        let avatar = item.Avatar ?? '/Areas/Admin/Content/img/profile-photos/1.png';
+                        html += `
+                        <a style="cursor: pointer" title="${item.Name}" onclick="getChatHistory('${item.Id}')" class="chat-unread">
+                            <div class="media-left">
+                                <img class="img-circle img-xs" src="${avatar}" alt="P">
+                                <i class="badge badge-success badge-stat badge-icon pull-left"></i>
+                            </div>
+                            <div class="media-body">
+                                <span class="chat-info">
+                                    <span class="text-xs">${dayjs(item.LastMessage.Created).fromNow() }</span>
+                                </span>
+                                <div class="chat-text">
+                                    <p class="chat-username">${item.Name}</p>
+                                    <p>${item.LastMessage.Content}</p>
+                                </div>
+                            </div>
+                        </a>
+                         `
+                    });
+                    $('#chat-user-list').html(html);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function scrollToBottom() {
+            let scrollableDiv = document.getElementById('chat-body-msg');
+            let bottomElement = scrollableDiv.lastElementChild;
+            bottomElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    </script>
+}

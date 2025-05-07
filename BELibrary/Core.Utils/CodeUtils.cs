@@ -6,7 +6,7 @@ namespace BELibrary.Core.Utils
 {
     public class CodeUtils
     {
-        public static string RandomString(int numberChar = 10)
+        public static string RandomString(int numberChar = 10) //tạo mã ngẫu nhiên
         {
             string allChar = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
             string[] allCharArray = allChar.Split(',');
@@ -31,7 +31,7 @@ namespace BELibrary.Core.Utils
             return randomCode;
         }
 
-        public static string GetLetter()
+        public static string GetLetter()  
         {
             string allChar = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
             string[] allCharArray = allChar.Split(',');

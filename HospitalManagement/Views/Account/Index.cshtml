@@ -1,5 +1,6 @@
 ﻿@using HospitalManagement.Handler
 @using BELibrary.Entity
+@using BELibrary.Core.Utils     
 
 @{
     ViewBag.Title = "Trang cá nhân";
@@ -12,14 +13,13 @@
     ViewBag.Title = "Create";
     var patient = (Patient)ViewBag.Patient ?? new Patient();
     var record = (Record)ViewBag.Record ?? new Record();
-
+    var bookings = (List<DoctorSchedule>)ViewBag.Bookings ?? new List<DoctorSchedule>();
     var result = record.Result;
     var note = record.Note;
 }
 
 @section CSS
 {
-
     <style>
         .fa {
             margin-right: 10px;
@@ -90,11 +90,8 @@
         }
     </style>
     <link href="~/Content/Site.css" rel="stylesheet" />
-
 }
-<!-- Start main-content -->
-<!-- Section: inner-header -->
-<!-- Section: Doctor Details -->
+
 <section class="container">
     <div class="breadcrumb-bar">
         <div class="container-fluid">
@@ -119,17 +116,16 @@
                         <!-- Simple profile -->
                         <div class="text-center">
                             <div class="pad-ver">
-                                <img src="@(string.IsNullOrEmpty(patient.ImageProfile) ? "/Areas/Admin/Content/img/profile-photos/1.png" : patient.ImageProfile)" class="img-lg img-circle  w-100" alt="Profile Picture">
+                                <img src="@(string.IsNullOrEmpty(patient.ImageProfile) ? "/Areas/Admin/Content/img/profile-photos/1.png" : patient.ImageProfile)" class="img-lg img-circle w-100" alt="Profile Picture">
                             </div>
-                            <h4 class="text-lg text-overflow mar-no">@patient.FullName</h4>
-                            <p class="text-sm text-muted">@patient.Job</p>
-
+                            <h4 class="text-overflow mar-no text-lg">@patient.FullName</h4>
+                            <p class="text-muted text-sm">@patient.Job</p>
                             <a class="btn btn-block btn-success btn-lg disable" href="/account/edit">Sửa thông tin</a>
                         </div>
                         <hr>
 
                         <!-- Profile Details -->
-                        <p class="pad-ver text-main text-sm text-uppercase text-bold">Thông tin</p>
+                        <p class="pad-ver text-main text-uppercase text-bold text-sm">Thông tin</p>
                         <p><i class="fa fa-code icon-lg icon-fw"></i> <label class="label label-success" style="font-size: 12px;">@patient.PatientCode</label> </p>
                         <p><i class="fa fa-map-marker icon-lg icon-fw"></i> @patient.Address</p>
                         <p><a href="#" class="btn-link"><i class="fa fa-tags icon-lg icon-fw"></i> @patient.DateOfBirth.ToString("dd/MM/yyyy")</a></p>
@@ -137,9 +133,7 @@
                     }
                     else
                     {
-
-                        <!-- Profile Details -->
-                        <p class="pad-ver text-main text-sm text-uppercase text-bold">Chưa có thông tin bệnh nhân</p>
+                        <p class="pad-ver text-main text-uppercase text-bold text-sm">Chưa có thông tin bệnh nhân</p>
                     }
                 </div>
                 <div class="fluid">
@@ -147,19 +141,18 @@
                         <div class="fluid">
                             @if (patient.Id != Guid.Empty)
                             {
-
                                 <div class="form-group text-center">
-                                    <h3> Bệnh án - Bệnh nhân: @patient.FullName</h3>
+                                    <h3>Bệnh án - Bệnh nhân: @patient.FullName</h3>
                                 </div>
 
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="table-responsive">
-                                            <table class="table table-striped">
+                                            <table class="table-striped table">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">STT</th>
-                                                        <th class="text-center">Tiêu đề </th>
+                                                        <th class="text-center">Tiêu đề</th>
                                                         <th class="text-center">Ngày đăng ký</th>
                                                         <th class="text-center">Actions</th>
                                                     </tr>
@@ -170,13 +163,54 @@
                                                         <tr id="row_@item.value.Id">
                                                             <td class="text-center"><a class="btn-link" href="#">@item.index</a></td>
                                                             <td class="text-center">@item.value.Title</td>
-
-                                                            <td class="text-center">@item.value.TestDate.ToString("dd/MM/yyyy HH:mm") </td>
+                                                            <td class="text-center">@item.value.TestDate.ToString("dd/MM/yyyy HH:mm")</td>
                                                             <td class="text-center">
                                                                 <button class="btn btn-info" title="Chi tiết" onclick="openRedirect('@item.value.Id')">
                                                                     Xem
                                                                     <i class="fa fa-eye icon-sm" style="margin-right: 0px;"></i>
                                                                 </button>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Danh sách lịch hẹn -->
+                                <div class="form-group text-center">
+                                    <h3>Lịch hẹn - Bệnh nhân: @patient.FullName</h3>
+                                </div>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table-striped table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-center">Tên bác sĩ</th>
+                                                        <th class="text-center">Thời gian đặt</th>
+                                                        <th class="text-center">Trạng thái</th>
+                                                        <th class="text-center">Hành động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var booking in bookings.Select((value, index) => new { index = (index + 1), value }))
+                                                    {
+                                                        <tr id="row_booking_@booking.value.Id">
+                                                            <td class="text-center">@booking.index</td>
+                                                            <td class="text-center">@booking.value.Doctor.Name</td>
+                                                            <td class="text-center">@booking.value.ScheduleBook.ToString("dd/MM/yyyy HH:mm")</td>
+                                                            <td class="text-center">@BookingStatusKey.GetText(booking.value.Status)</td>
+                                                            <td class="text-center">
+                                                                @if (booking.value.Status == BookingStatusKey.Pending)
+                                                                {
+                                                                    <button class="btn btn-danger btn-sm" title="Hủy lịch hẹn" onclick="cancelBooking(@booking.value.Id)">
+                                                                        Hủy
+                                                                        <i class="fa fa-times icon-sm" style="margin-right: 0px;"></i>
+                                                                    </button>
+                                                                }
                                                             </td>
                                                         </tr>
                                                     }
@@ -192,17 +226,38 @@
             </div>
         </div>
 
-        <div class="text-center " style="padding-bottom: 20px">
-            <button class="btn btn-primary" onclick="window.history.back()"> Quay lại</button>
+        <div class="text-center" style="padding-bottom: 20px">
+            <button class="btn btn-primary" onclick="window.history.back()">Quay lại</button>
         </div>
     </div>
 </section>
 
-<!-- end main-content -->
 @section Scripts {
     <script>
         function openRedirect(id) {
             window.location.href = `/account/patientRecord?id=${id}`;
+        }
+
+        function cancelBooking(bookingId) {
+            if (confirm('Bạn có chắc chắn muốn hủy lịch hẹn này?')) {
+                $.ajax({
+                    url: '/Account/CancelBooking',
+                    type: 'POST',
+                    data: { bookingId: bookingId },
+                    success: function (response) {
+                        if (response.status) {
+                            Lobibox.notify('success', { msg: response.mess });
+                            $(`#row_booking_${bookingId}`).find('td:eq(3)').text('Hủy');
+                            $(`#row_booking_${bookingId}`).find('td:eq(4)').empty();
+                        } else {
+                            Lobibox.notify('error', { msg: response.mess });
+                        }
+                    },
+                    error: function (jqXhr, textStatus) {
+                        Lobibox.notify('error', { msg: `Yêu cầu thất bại: ${textStatus}` });
+                    }
+                });
+            }
         }
     </script>
 }

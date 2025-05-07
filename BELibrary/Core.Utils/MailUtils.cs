@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace BELibrary.Core.Utils
 {
-    public class MailUtils
+    public class MailUtils  //Gửi email
     {
         protected static string Generatekey()
         {
@@ -32,11 +32,11 @@ namespace BELibrary.Core.Utils
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Credentials =
                         new NetworkCredential(
-                            "email@gmail.com",
-                            "password"),
+                            "khue16102004@gmail.com",
+                            "aavi fxpb ygzq wjdr"),
                     EnableSsl = true,
                 };
-                var from = new MailAddress("phucnd.hvit@gmail.com", "A - Movie");
+                var from = new MailAddress("khue16102004@gmail.com", "A");
                 var to = new MailAddress(mailTo);
                 var mail = new MailMessage(from, to)
                 {

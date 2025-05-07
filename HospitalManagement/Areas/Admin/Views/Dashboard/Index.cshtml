@@ -49,7 +49,7 @@
                 <!--Sparkline Area Chart-->
                 <div class="panel panel-info panel-colorful">
                     <div class="pad-all">
-                        <p class="text-lg text-semibold"><i class="demo-pli-add-user icon-fw"></i>Bệnh nhân</p>
+                        <p class="text-semibold text-lg"><i class="demo-pli-add-user icon-fw"></i>Bệnh nhân</p>
                         <p class="mar-no">
                             <span class="pull-right text-bold">@ViewBag.PatientTodayCount</span> Hôm nay
                         </p>
@@ -68,7 +68,7 @@
                 <!--Sparkline Line Chart-->
                 <div class="panel panel-danger panel-colorful">
                     <div class="pad-all">
-                        <p class="text-lg text-semibold"><i class="fa fa-hotel icon-fw"></i>Vật tư</p>
+                        <p class="text-semibold text-lg"><i class="fa fa-hotel icon-fw"></i>Vật tư</p>
                         <p class="mar-no">
                             <span class="pull-right text-bold">@ViewBag.ItemTodayCount</span> Hôm nay
                         </p>
@@ -90,7 +90,7 @@
                 <!--Sparkline bar chart -->
                 <div class="panel panel-mint panel-colorful">
                     <div class="pad-all">
-                        <p class="text-lg text-semibold"><i class="fa fa-cubes icon-fw"></i> Đơn thuốc</p>
+                        <p class="text-semibold text-lg"><i class="fa fa-cubes icon-fw"></i> Đơn thuốc</p>
                         <p class="mar-no">
                             <span class="pull-right text-bold">@ViewBag.PrescriptionTodayCount </span> Hôm nay
                         </p>
@@ -110,7 +110,7 @@
                 <!--Sparkline pie chart -->
                 <div class="panel panel-warning panel-colorful">
                     <div class="pad-all">
-                        <p class="text-lg text-semibold"><i class="demo-pli-calendar-4 icon-fw"></i> Lịch đặt</p>
+                        <p class="text-semibold text-lg"><i class="demo-pli-calendar-4 icon-fw"></i> Lịch đặt</p>
                         <p class="mar-no">
                             <span class="pull-right text-bold">@ViewBag.ScheduleTodayCount</span> Hôm nay
                         </p>
@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-striped" id="tblData">
+                    <table class="table-striped table" id="tblData">
                         <thead>
                             <tr>
                                 <th class="text-center">STT</th>
@@ -269,7 +269,7 @@
                                     <td class="text-center">@item.value.DateOfBirth.ToString("dd/MM/yyyy")</td>
                                     <td class="text-center">@(item.value.Gender ? "Nam" : "Nữ")</td>
                                     <td class="text-center">
-                                        <button class="btn btn-info btn-icon" title="Xem bệnh án" onclick="openRecord('@item.value.Id')"><i class="fa fa-calendar  icon-lg"></i></button>
+                                        @*<button class="btn btn-info btn-icon" title="Xem bệnh án" onclick="openRecord('@item.value.Id')"><i class="fa fa-calendar icon-lg"></i></button>*@
                                         <button class="btn btn-info btn-icon" title="Sửa bệnh án" onclick="openEditing('@item.value.Id')"><i class="demo-psi-pen-5 icon-lg"></i></button>
                                         @*<button class="btn btn-danger btn-icon" onclick="deleteElement('@item.value.Id','@item.value.FullName')"><i class="demo-psi-recycling icon-lg"></i></button>*@
                                     </td>

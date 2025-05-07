@@ -33,6 +33,8 @@ namespace BELibrary.Core.Entity
             Articles = new ArticleRepository(_context);
         }
 
+
+        //Khởi tạo các thuộc tính cho các repository
         public IAccountRepository Accounts { get; private set; }
         public ICategoryRepository Categories { get; private set; }
         public IDetailPrescriptionRepository DetailPrescriptions { get; private set; }

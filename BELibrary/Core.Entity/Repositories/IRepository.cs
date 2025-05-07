@@ -31,6 +31,7 @@ namespace BELibrary.Core.Entity.Repositories
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> filter);
 
         IEnumerable<TEntity> Include(params Expression<Func<TEntity, object>>[] includes);
+        //thực hiện phương thức Include để lấy dữ liệu liên quan đến các bảng khác
 
         IEnumerable<TEntity> IncludeFilter(params Expression<Func<TEntity, object>>[] includes);
     }

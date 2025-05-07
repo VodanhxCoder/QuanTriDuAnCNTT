@@ -149,7 +149,7 @@
                         <!--End Navigation toogle button-->
                     </ul>
                     <ul class="nav navbar-top-links">
-                        <li>
+                        @*<li>
                             <a href="/" target="_blank">
                                 <i class="demo-pli-home"></i>
                             </a>
@@ -158,17 +158,17 @@
                             <a href="/admin/chat">
                                 <i class="demo-pli-speech-bubble-7"></i>
                             </a>
-                        </li>
+                        </li>*@
                         <!--Notification dropdown-->
                         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li class="dropdown">
+                        <!--<li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                 <i class="demo-pli-bell"></i>
                                 <span class="badge badge-header badge-danger"></span>
-                            </a>
+                            </a>-->
 
                             <!--Notification dropdown menu-->
-                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                            <!--<div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
                                 <div class="nano scrollable">
                                     <div class="nano-content">
                                         <ul class="head-list">
@@ -223,16 +223,16 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <!--Dropdown footer-->
-                                <div class="pad-all bord-top">
+                                <!--<div class="pad-all bord-top">
                                     <a href="#" class="btn-link text-main box-block">
                                         <i class="pci-chevron chevron-right pull-right"></i>Show All Notifications
                                     </a>
                                 </div>
                             </div>
-                        </li>
+                        </li>-->
                         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                         <!--End notifications dropdown-->
                         <!--User dropdown-->
@@ -531,19 +531,19 @@
                                                 <li><a href="/admin/doctor">Danh sách</a></li>
                                             </ul>
                                         </li>
-                                        <!--<li>
+                                        <li>
                                             <a href="#">
                                                 <i class="fa fa-newspaper-o"></i>
                                                 <span class="menu-title">Bài viết</span>
                                                 <i class="arrow"></i>
-                                            </a>-->
+                                            </a>
 
-                                            <!--Submenu-->
-                                            <!--<ul class="@(ViewContext.RouteData.Values["controller"].ToString().ToLower().Equals("article")? "collapse in" : "collapse")">
+                                            Submenu
+                                            <ul class="@(ViewContext.RouteData.Values["controller"].ToString().ToLower().Equals("article")? "collapse in" : "collapse")">
                                                 <li><a href="/admin/article">Danh sách</a></li>
                                                 <li><a href="/admin/article/create">Thêm mới</a></li>
                                             </ul>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-user"></i>

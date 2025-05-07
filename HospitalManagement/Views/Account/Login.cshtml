@@ -33,6 +33,10 @@
                                     <input type="password" id="Password" autocomplete="false" class="form-control floating">
                                     <label class="focus-label">Password</label>
                                 </div>
+                                <!-- Thêm widget reCAPTCHA -->
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LdovzArAAAAABRPV1Jbh0QyqbhneGguH7JJrKyl"></div>
+                                </div>
                                 <div class="text-right">
                                     <a class="forgot-link" href="#" id="demo-bootbox-bounce">Forgot Password ?</a>
                                 </div>
@@ -49,7 +53,7 @@
                                         <a href="#" class="btn btn-google btn-block disabled"><i class="fab fa-google mr-1"></i> Login</a>
                                     </div>
                                 </div>
-                                <div class="text-center dont-have">Don’t have an account? <a href="/account/register">Register</a></div>
+                                <div class="dont-have text-center">Don’t have an account? <a href="/account/register">Register</a></div>
                             </form>
                         </div>
                     </div>
@@ -61,6 +65,8 @@
 
 <!-- end main-content -->
 @section Scripts {
+    <!-- Thêm script Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="~/Scripts/js/live/login.client.js"></script>
 
     <script type="text/javascript">
@@ -68,11 +74,8 @@
             $('#demo-bootbox-bounce').on('click', function () {
                 Lobibox.alert("success", {
                     msg: `<p class='text-semibold text-main'>Cảm ơn</p><p>Để lấy lại mật khẩu vui lòng liên hệ nhân viên bệnh viện để được cấp lại mật khẩu mới.</p>`
-
                 });
             });
         });
     </script>
-
-
 }

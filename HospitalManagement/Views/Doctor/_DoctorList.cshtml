@@ -1,0 +1,78 @@
+﻿@model List<BELibrary.Entity.Doctor>
+
+@foreach (var doctor in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="doctor-widget">
+                <div class="doc-info-left">
+                    <div class="doctor-img">
+                        <a href="/doctor/detail?id=@doctor.Id">
+                            <img src="@doctor.Avatar" class="img-fluid" alt="User Image">
+                        </a>
+                    </div>
+                    <div class="doc-info-cont">
+                        <h4 class="doc-name"><a href="/doctor/detail?id=@doctor.Id">@doctor.Name</a></h4>
+                        <p class="doc-speciality">@doctor.Descriptions</p>
+                        <h5 class="doc-department">@doctor.Faculty.Name</h5>
+                        <div class="rating">
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="d-inline-block average-rating">(17)</span>
+                        </div>
+                        <div class="clinic-details">
+                            <p class="doc-location"><i class="fas fa-map-marker-alt"></i> @doctor.Address</p>
+                            <ul class="clinic-gallery">
+                                <li>
+                                    <a href="~/Content/theme/img/features/feature-01.jpg" data-fancybox="gallery">
+                                        <img src="~/Content/theme/img/features/feature-01.jpg" alt="Feature">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/theme/img/features/feature-02.jpg" data-fancybox="gallery">
+                                        <img src="~/Content/theme/img/features/feature-02.jpg" alt="Feature">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/theme/img/features/feature-03.jpg" data-fancybox="gallery">
+                                        <img src="~/Content/theme/img/features/feature-03.jpg" alt="Feature">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/theme/img/features/feature-04.jpg" data-fancybox="gallery">
+                                        <img src="~/Content/theme/img/features/feature-04.jpg" alt="Feature">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clinic-services">
+                            <span>Dental Fillings</span>
+                            <span>Whitening</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-info-right">
+                    <div class="clini-infos">
+                        <ul>
+                            <li><i class="far fa-thumbs-up"></i> 98%</li>
+                            <li><i class="far fa-comment"></i> 17 Feedback</li>
+                            <li><i class="fas fa-map-marker-alt"></i> @doctor.Address</li>
+                            @{
+                                var genderIcon = doctor.Gender ? "mars" : "venus";
+                                var genderText = doctor.Gender ? "Nam" : "Nữ";
+                            }
+                            <li><i class="fas fa-@genderIcon"></i> @genderText</li>
+                        </ul>
+                    </div>
+                    <div class="clinic-booking">
+                        <a class="view-pro-btn" href="/doctor/detail?id=@doctor.Id">View Profile</a>
+                        <a class="apt-btn" href="javascript:void(0)" onclick="bookNow('@doctor.Id')">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

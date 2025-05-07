@@ -12,7 +12,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-
                 <div class="account-content">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 col-lg-6 login-left">
@@ -24,7 +23,6 @@
                             </div>
 
                             <form name="reg-form" class="register-form" method="post" id="frmReg">
-
                                 <div class="row">
                                     <div class="form-group form-focus col-md-6">
                                         <label for="form_name">Tên đầy đủ</label>
@@ -69,6 +67,10 @@
                                         <input id="form_re_enter_password" name="RePassword" class="form-control" type="password" required>
                                     </div>
                                 </div>
+                                <!-- Thêm reCAPTCHA -->
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LdovzArAAAAABRPV1Jbh0QyqbhneGguH7JJrKyl"></div>
+                                </div>
                                 <div class="text-right">
                                     <a class="forgot-link" href="/account/login">Already have an account?</a>
                                 </div>
@@ -96,5 +98,6 @@
 </div>
 
 @section Scripts {
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="~/Scripts/js/live/login.client.js"></script>
 }

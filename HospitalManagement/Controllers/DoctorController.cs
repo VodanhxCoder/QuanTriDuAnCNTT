@@ -23,7 +23,6 @@ namespace HospitalManagement.Controllers
         {
             ViewBag.Host = (Request.Url == null ? "" : Request.Url.Host);
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            // the code that you want to measure comes here
 
             if (query == "")
             {
@@ -45,15 +44,12 @@ namespace HospitalManagement.Controllers
                 var q = (
                     from mt in listData
                     join f in faculties on mt.FacultyId equals f.Id
-
                     select mt).AsQueryable();
 
                 if (!string.IsNullOrEmpty(query))
                     q = q.Where(x => x.Name.ToLower().Contains(query.Trim().ToLower())
-                                     || !string.IsNullOrEmpty(x.Descriptions) && x.Descriptions.ToLower().Contains(query.Trim().ToLower())
-                                     || !string.IsNullOrEmpty(x.Faculty.Name) && x.Faculty.Name.ToLower().Contains(query.Trim().ToLower())
-
-                    );
+                                     || (!string.IsNullOrEmpty(x.Descriptions) && x.Descriptions.ToLower().Contains(query.Trim().ToLower()))
+                                     || (!string.IsNullOrEmpty(x.Faculty.Name) && x.Faculty.Name.ToLower().Contains(query.Trim().ToLower())));
 
                 if (facultiesSelected != null && facultiesSelected.Count > 0)
                     q = q.Where(x => facultiesSelected.Contains(x.Faculty.Id));
@@ -68,6 +64,40 @@ namespace HospitalManagement.Controllers
                 elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
                 ViewBag.RequestTime = elapsedMs;
                 return View(q.ToPagedList(pageNumber, pageSize));
+            }
+        }
+
+        // Action để tải thêm bác sĩ (gọi bằng AJAX)
+        [HttpPost]
+        public ActionResult LoadMore(string query, int page, int pageSize, List<bool> genders, List<Guid> facultiesSelected)
+        {
+            using (var workScope = new UnitOfWork(new HospitalManagementDbContext()))
+            {
+                var listData = workScope.Doctors.Query(x => !x.IsDelete).ToList();
+                var faculties = workScope.Faculties.GetAll().ToList();
+
+                var q = (
+                    from mt in listData
+                    join f in faculties on mt.FacultyId equals f.Id
+                    select mt).AsQueryable();
+
+                if (!string.IsNullOrEmpty(query))
+                    q = q.Where(x => x.Name.ToLower().Contains(query.Trim().ToLower())
+                                     || (!string.IsNullOrEmpty(x.Descriptions) && x.Descriptions.ToLower().Contains(query.Trim().ToLower()))
+                                     || (!string.IsNullOrEmpty(x.Faculty.Name) && x.Faculty.Name.ToLower().Contains(query.Trim().ToLower())));
+
+                if (facultiesSelected != null && facultiesSelected.Count > 0)
+                    q = q.Where(x => facultiesSelected.Contains(x.Faculty.Id));
+                if (genders != null && genders.Count > 0)
+                    q = q.Where(x => genders != null && genders.Contains(x.Gender));
+
+                var doctors = q.OrderBy(x => x.Name)
+                               .Skip((page - 1) * pageSize)
+                               .Take(pageSize)
+                               .ToList();
+
+                // Trả về partial view chứa danh sách bác sĩ mới
+                return PartialView("_DoctorList", doctors);
             }
         }
 
@@ -124,7 +154,6 @@ namespace HospitalManagement.Controllers
         public JsonResult Book(Guid doctorId, DateTime time)
         {
             var user = CookiesManage.GetUser();
-
             if (user == null)
             {
                 return Json(new { status = false, mess = "Vui lòng đăng nhập" });
@@ -134,8 +163,32 @@ namespace HospitalManagement.Controllers
             {
                 var doctor = workScope.Doctors.FirstOrDefault(x => x.Id == doctorId && !x.IsDelete);
                 if (doctor == null)
-                    return Json(new { status = true, mess = "Cập nhập thành công " });
+                {
+                    return Json(new { status = false, mess = "Bác sĩ không tồn tại" });
+                }
 
+                // Điều kiện 1: Phải đặt trước ít nhất 1 tiếng
+                var currentTime = DateTime.Now;
+                if (time < currentTime.AddHours(1))
+                {
+                    return Json(new { status = false, mess = "Lịch hẹn phải được đặt trước ít nhất 1 tiếng" });
+                }
+
+                // Điều kiện 2: Không trùng lịch trong vòng 10 phút
+                var timeRangeStart = time.AddMinutes(-10);
+                var timeRangeEnd = time.AddMinutes(10);
+                var conflictingSchedules = workScope.DoctorSchedules
+                    .Query(x => x.DoctorId == doctorId
+                                && x.ScheduleBook >= timeRangeStart
+                                && x.ScheduleBook <= timeRangeEnd
+                                && (x.Status == BookingStatusKey.Pending || x.Status == BookingStatusKey.Active))
+                    .Any();
+                if (conflictingSchedules)
+                {
+                    return Json(new { status = false, mess = "Bác sĩ đã có lịch hẹn trong khoảng thời gian này (±10 phút)" });
+                }
+
+                // Thêm lịch hẹn
                 workScope.DoctorSchedules.Add(new DoctorSchedule
                 {
                     DoctorId = doctor.Id,
@@ -145,21 +198,21 @@ namespace HospitalManagement.Controllers
                 });
                 workScope.Complete();
 
+                // Thêm hoặc cập nhật mối quan hệ Patient-Doctor
                 var patientDoctor = workScope.PatientDoctors.FirstOrDefault(x =>
                     x.DoctorId == doctor.Id && x.PatientId == user.PatientId);
-
-                if (patientDoctor != null)
-                    return Json(new { status = true, mess = "Cập nhập thành công " });
-
-                workScope.PatientDoctors.Add(new PatientDoctor
+                if (patientDoctor == null)
                 {
-                    PatientId = user.PatientId.GetValueOrDefault(),
-                    DoctorId = doctor.Id,
-                    Status = 1
-                });
-                workScope.Complete();
+                    workScope.PatientDoctors.Add(new PatientDoctor
+                    {
+                        PatientId = user.PatientId.GetValueOrDefault(),
+                        DoctorId = doctor.Id,
+                        Status = 1
+                    });
+                    workScope.Complete();
+                }
 
-                return Json(new { status = true, mess = "Cập nhập thành công " });
+                return Json(new { status = true, mess = "Đặt lịch thành công" });
             }
         }
     }

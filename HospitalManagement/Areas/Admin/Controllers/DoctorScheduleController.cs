@@ -123,7 +123,7 @@ namespace HospitalManagement.Areas.Admin.Controllers
                 }
                 else
                 {
-                    return Json(new { status = true, mess = "Method not allow" + KeyElement });
+                    return Json(new { status = true, mess = "Method not allow" + KeyElement }); //không cho phép thêm 
                 }
             }
             catch (Exception ex)

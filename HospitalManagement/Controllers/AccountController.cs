@@ -7,8 +7,11 @@ using HospitalManagement.Models;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace HospitalManagement.Controllers
 {
@@ -29,9 +32,56 @@ namespace HospitalManagement.Controllers
                 ViewBag.Patient = patient;
 
                 var detailRecord = workScope.PatientRecords
-                    .Query(x => x.PatientId == user.PatientId).ToList();
+                    .Query(x => x.PatientId == user.PatientId)
+                    .ToList();
+
+                // Lấy danh sách lịch hẹn của bệnh nhân
+                var bookings = workScope.DoctorSchedules
+                    .Include(x => x.Doctor)
+                    .Where(x => x.PatientId == user.PatientId)
+                    .OrderByDescending(x => x.ScheduleBook)
+                    .ToList();
+                ViewBag.Bookings = bookings;
 
                 return View(detailRecord);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult CancelBooking(int bookingId)
+        {
+            if (!CookiesManage.Logined())
+            {
+                return Json(new { status = false, mess = "Vui lòng đăng nhập" });
+            }
+
+            try
+            {
+                var user = CookiesManage.GetUser();
+                using (var workScope = new UnitOfWork(new HospitalManagementDbContext()))
+                {
+                    var booking = workScope.DoctorSchedules
+                        .FirstOrDefault(x => x.Id == bookingId && x.PatientId == user.PatientId);
+                    if (booking == null)
+                    {
+                        return Json(new { status = false, mess = "Lịch hẹn không tồn tại" });
+                    }
+
+                    if (booking.Status != BookingStatusKey.Pending)
+                    {
+                        return Json(new { status = false, mess = "Chỉ có thể hủy lịch hẹn đang chờ" });
+                    }
+
+                    booking.Status = BookingStatusKey.Reject;
+                    workScope.DoctorSchedules.Put(booking, booking.Id);
+                    workScope.Complete();
+
+                    return Json(new { status = true, mess = "Hủy lịch hẹn thành công" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, mess = "Có lỗi xảy ra: " + ex.Message });
             }
         }
 
@@ -61,8 +111,7 @@ namespace HospitalManagement.Controllers
 
                 var record = workScope.Records.FirstOrDefault(x => x.Id == patientRecord.RecordId);
 
-                var mainDetailRecord =
-                    workScope.DetailRecords.FirstOrDefault(x => x.RecordId == record.Id && x.IsMainRecord);
+                var mainDetailRecord = workScope.DetailRecords.FirstOrDefault(x => x.RecordId == record.Id && x.IsMainRecord);
 
                 var prescriptions = workScope.Prescriptions
                     .Include(x => x.DetailPrescription, x => x.DetailPrescription.Medicine)
@@ -141,10 +190,43 @@ namespace HospitalManagement.Controllers
             return View();
         }
 
+        // Hàm xác minh reCAPTCHA
+        private async Task<bool> VerifyRecaptcha(string recaptchaResponse)
+        {
+            var secretKey = "6LdovzArAAAAAFhhmcfG1ti-k7_l1nCWUHTxGah7"; //Secret Key 
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync(
+                    $"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={recaptchaResponse}",
+                    null);
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var captchaResult = JsonConvert.DeserializeObject<CaptchaResponse>(jsonString);
+                return captchaResult.Success;
+            }
+        }
+
+        private class CaptchaResponse
+        {
+            public bool Success { get; set; }
+            public string[] ErrorCodes { get; set; }
+        }
+
         [HttpPost]
         [ValidateInput(true)]
-        public JsonResult CheckLogin(LoginModel model)
+        public async Task<JsonResult> CheckLogin(LoginModel model, string gRecaptchaResponse)
         {
+            // Xác minh reCAPTCHA
+            if (string.IsNullOrEmpty(gRecaptchaResponse))
+            {
+                return Json(new { status = false, mess = "Vui lòng xác nhận bạn không phải là robot" });
+            }
+
+            var isCaptchaValid = await VerifyRecaptcha(gRecaptchaResponse);
+            if (!isCaptchaValid)
+            {
+                return Json(new { status = false, mess = "Xác minh CAPTCHA thất bại" });
+            }
+
             using (var workScope = new UnitOfWork(new HospitalManagementDbContext()))
             {
                 var account = workScope.Accounts.ValidFeAccount(model.Username, model.Password);
@@ -154,7 +236,6 @@ namespace HospitalManagement.Controllers
                     var host = HttpContext.Request.Url.Authority;
                     if (account != null)
                     {
-                        //đăng nhập thành công
                         var cookieClient = account.UserName + "|" + host.ToLower() + "|" + account.Id;
                         var decodeCookieClient = CryptorEngine.Encrypt(cookieClient, true);
                         var userCookie = new HttpCookie(CookiesKey.Client)
@@ -179,12 +260,25 @@ namespace HospitalManagement.Controllers
 
         [HttpPost]
         [ValidateInput(true)]
-        public JsonResult Register(Account us, string rePassword)
+        public async Task<JsonResult> Register(Account us, string rePassword, string gRecaptchaResponse)
         {
             if (us.Password != rePassword)
             {
                 return Json(new { status = false, mess = "Mật khẩu không khớp" });
             }
+
+            // Xác minh reCAPTCHA
+            if (string.IsNullOrEmpty(gRecaptchaResponse))
+            {
+                return Json(new { status = false, mess = "Vui lòng xác nhận bạn không phải là robot" });
+            }
+
+            var isCaptchaValid = await VerifyRecaptcha(gRecaptchaResponse);
+            if (!isCaptchaValid)
+            {
+                return Json(new { status = false, mess = "Xác minh CAPTCHA thất bại" });
+            }
+
             using (var workScope = new UnitOfWork(new HospitalManagementDbContext()))
             {
                 var account = workScope.Accounts.FirstOrDefault(x => !x.IsDeleted && x.UserName.ToLower() == us.UserName.ToLower());
@@ -236,7 +330,6 @@ namespace HospitalManagement.Controllers
                         workScope.Accounts.Add(us);
                         workScope.Complete();
 
-                        //Login luon
                         if (HttpContext.Request.Url == null)
                             return Json(new { status = false, mess = "Thêm không thành công" });
 
@@ -290,9 +383,6 @@ namespace HospitalManagement.Controllers
                             if (splitFilename.Length > 1)
                             {
                                 var fileExt = splitFilename[splitFilename.Length - 1];
-
-                                //Check ext
-
                                 if (FileKey.FileExtensionApprove().Any(x => x == fileExt))
                                 {
                                     var slugName = StringHelper.ConvertToAlias(account.FullName);
@@ -325,7 +415,6 @@ namespace HospitalManagement.Controllers
                         else
                         {
                             var patient = workScope.Patients.FirstOrDefault(x => !x.IsDeleted && x.Id == user.PatientId);
-
                             if (patient != null)
                             {
                                 patient.ImageProfile = us.LinkAvatar;
@@ -336,7 +425,6 @@ namespace HospitalManagement.Controllers
                         workScope.Accounts.Put(account, account.Id);
                         workScope.Complete();
 
-                        //Đăng xuất
                         var nameCookie = Request.Cookies[CookiesKey.Client];
                         if (nameCookie != null)
                         {
@@ -347,11 +435,9 @@ namespace HospitalManagement.Controllers
                             Response.Cookies.Add(myCookie);
                         }
 
-                        //Login luon
                         if (HttpContext.Request.Url != null)
                         {
                             var host = HttpContext.Request.Url.Authority;
-
                             var cookieClient = account.UserName + "|" + host.ToLower() + "|" + account.Id;
                             var decodeCookieClient = CryptorEngine.Encrypt(cookieClient, true);
                             var userCookie = new HttpCookie(CookiesKey.Client)
@@ -364,7 +450,7 @@ namespace HospitalManagement.Controllers
                         }
                         else
                         {
-                            return Json(new { status = false, mess = "Cập nhật K thành công" });
+                            return Json(new { status = false, mess = "Cập nhật không thành công" });
                         }
                     }
                     catch (Exception ex)
@@ -415,7 +501,6 @@ namespace HospitalManagement.Controllers
                             workScope.Accounts.Put(account, account.Id);
                             workScope.Complete();
 
-                            //Đăng xuất
                             var nameCookie = Request.Cookies[CookiesKey.Client];
                             if (nameCookie != null)
                             {
@@ -426,11 +511,9 @@ namespace HospitalManagement.Controllers
                                 Response.Cookies.Add(myCookie);
                             }
 
-                            //Login luon
                             if (HttpContext.Request.Url != null)
                             {
                                 var host = HttpContext.Request.Url.Authority;
-
                                 var cookieClient = account.UserName + "|" + host.ToLower() + "|" + account.Id;
                                 var decodeCookieClient = CryptorEngine.Encrypt(cookieClient, true);
                                 var userCookie = new HttpCookie(CookiesKey.Client)
@@ -443,12 +526,12 @@ namespace HospitalManagement.Controllers
                             }
                             else
                             {
-                                return Json(new { status = false, mess = "Cập nhật K thành công" });
+                                return Json(new { status = false, mess = "Cập nhật không thành công" });
                             }
                         }
                         else
                         {
-                            return Json(new { status = false, mess = "mật khẩu cũ không đúng" });
+                            return Json(new { status = false, mess = "Mật khẩu cũ không đúng" });
                         }
                     }
                     catch (Exception ex)
