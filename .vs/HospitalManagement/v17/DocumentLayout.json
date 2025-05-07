@@ -3,35 +3,39 @@
   "WorkspaceRootPath": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\views\\doctor\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\doctor\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\views\\doctor\\_doctorlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\doctor\\_doctorlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\_doctorlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\views\\doctor\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\areas\\admin\\views\\statistical\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\areas\\admin\\views\\statistical\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\areas\\admin\\views\\statistical\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -39,7 +43,7 @@
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\areas\\admin\\controllers\\recordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|e:\\lap_trinh_web_nc\\hospitalmanagement\\source\\hospitalmanagement\\areas\\admin\\controllers\\patientimportexportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\areas\\admin\\controllers\\patientimportexportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\areas\\admin\\controllers\\patientimportexportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -141,10 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{98A12BEB-3EA8-448A-BE64-F67242449103}|BELibrary\\BELibrary.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\belibrary\\core.utils\\variableextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{98A12BEB-3EA8-448A-BE64-F67242449103}|BELibrary\\BELibrary.csproj|solutionrelative:belibrary\\core.utils\\variableextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\doctor\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|solutionrelative:hospitalmanagement\\views\\doctor\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3085D9E7-2072-4E1F-A0D2-8787468F8666}|HospitalManagement\\HospitalManagement.csproj|E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\hospitalmanagement\\views\\account\\patientrecord.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -384,7 +384,7 @@
         },
         {
           "DockedWidth": 345,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Bookmark",
@@ -412,20 +412,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Search.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Search.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Doctor\\Search.cshtml",
               "ToolTip": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Search.cshtml",
               "RelativeToolTip": "HospitalManagement\\Views\\Doctor\\Search.cshtml",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAkwIcAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAkwIIAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-07T14:39:33.679Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Doctor\\Index.cshtml",
@@ -433,8 +433,7 @@
               "RelativeToolTip": "HospitalManagement\\Views\\Doctor\\Index.cshtml",
               "ViewState": "AgIAACoAAAAAAAAAAAAAABAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T14:39:19.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T14:39:19.364Z"
             },
             {
               "$type": "Document",
@@ -451,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "HomeController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Controllers\\HomeController.cs",
@@ -459,12 +458,11 @@
               "RelativeToolTip": "HospitalManagement\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T14:26:59.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T14:26:59.392Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Shared\\_Layout.cshtml",
@@ -472,12 +470,11 @@
               "RelativeToolTip": "HospitalManagement\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T14:15:41.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T14:15:41.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AccountController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Controllers\\AccountController.cs",
@@ -485,12 +482,11 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAEsBAAAAAAAAAAAqwGEBAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T13:30:18.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T13:30:18.292Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Statistical\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Statistical\\Index.cshtml",
@@ -498,12 +494,11 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Statistical\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T13:21:38.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T13:21:38.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PatientImportExportController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Controllers\\PatientImportExportController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Controllers\\PatientImportExportController.cs",
@@ -511,12 +506,11 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Controllers\\PatientImportExportController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T10:16:28.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T10:16:28.243Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "_PartialHeader.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Shared\\_PartialHeader.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Shared\\_PartialHeader.cshtml",
@@ -524,12 +518,11 @@
               "RelativeToolTip": "HospitalManagement\\Views\\Shared\\_PartialHeader.cshtml",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-06T14:46:33.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T14:46:33.046Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Home\\Index.cshtml",
@@ -537,12 +530,11 @@
               "RelativeToolTip": "HospitalManagement\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAHsAAAAAAAAAAAAUwIwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T11:37:18.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T11:37:18.617Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DoctorController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Controllers\\DoctorController.cs",
@@ -550,12 +542,24 @@
               "RelativeToolTip": "HospitalManagement\\Controllers\\DoctorController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAUwEcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T03:37:06.64Z",
+              "WhenOpened": "2025-05-07T03:37:06.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Detail.cshtml",
+              "RelativeDocumentMoniker": "HospitalManagement\\Views\\Doctor\\Detail.cshtml",
+              "ToolTip": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Detail.cshtml",
+              "RelativeToolTip": "HospitalManagement\\Views\\Doctor\\Detail.cshtml",
+              "ViewState": "AgIAAFMCAAAAAAAAAAAUwGQCAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-06T14:55:53.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "RecordController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Controllers\\RecordController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Controllers\\RecordController.cs",
@@ -563,25 +567,24 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Controllers\\RecordController.cs",
               "ViewState": "AgIAAOYAAAAAAAAAAAAAAPYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T15:46:36.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T15:46:36.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "ToolTip": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
-              "ViewState": "AgIAANsAAAAAAAAAAAAAANsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAMoAAAAAAAAAABBywNsAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-26T09:28:12.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Login\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Login\\Index.cshtml",
@@ -594,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "IRepository.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\Core.Entity\\Repositories\\IRepository.cs",
               "RelativeDocumentMoniker": "BELibrary\\Core.Entity\\Repositories\\IRepository.cs",
@@ -602,12 +605,11 @@
               "RelativeToolTip": "BELibrary\\Core.Entity\\Repositories\\IRepository.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAA3wBQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T07:45:11.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T07:45:11.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Doctor\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Doctor\\Index.cshtml",
@@ -620,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "packages.config",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\packages.config",
               "RelativeDocumentMoniker": "HospitalManagement\\packages.config",
@@ -632,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Create.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Patient\\Create.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Patient\\Create.cshtml",
@@ -640,12 +642,11 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Patient\\Create.cshtml",
               "ViewState": "AgIAAI0AAAAAAAAAAAAqwLAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T15:37:58.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T15:37:58.664Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "All.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Patient\\All.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Patient\\All.cshtml",
@@ -653,12 +654,11 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Patient\\All.cshtml",
               "ViewState": "AgIAAJ4AAAAAAAAAAAAqwNIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T10:18:35.611Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T10:18:35.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "AccountController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Controllers\\AccountController.cs",
@@ -670,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Account.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\Entity\\Account.cs",
               "RelativeDocumentMoniker": "BELibrary\\Entity\\Account.cs",
@@ -678,12 +678,11 @@
               "RelativeToolTip": "BELibrary\\Entity\\Account.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAAB4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:04:21.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T13:04:21.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "App.config",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\App.config",
               "RelativeDocumentMoniker": "BELibrary\\App.config",
@@ -696,7 +695,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Web.config",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Web.config",
               "RelativeDocumentMoniker": "HospitalManagement\\Web.config",
@@ -709,7 +708,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "VariableExtensions.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\Core.Utils\\VariableExtensions.cs",
               "RelativeDocumentMoniker": "BELibrary\\Core.Utils\\VariableExtensions.cs",
@@ -721,7 +720,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "_LayoutAdmin.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
@@ -734,7 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Global.asax.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Global.asax.cs",
@@ -746,7 +745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "packages.config",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\packages.config",
               "RelativeDocumentMoniker": "BELibrary\\packages.config",
@@ -758,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Patient.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\Entity\\Patient.cs",
               "RelativeDocumentMoniker": "BELibrary\\Entity\\Patient.cs",
@@ -770,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Register.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Account\\Register.cshtml",
@@ -782,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "PatientController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Areas\\Admin\\Controllers\\PatientController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Areas\\Admin\\Controllers\\PatientController.cs",
@@ -794,7 +793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "login.client.js",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Scripts\\js\\live\\login.client.js",
               "RelativeDocumentMoniker": "HospitalManagement\\Scripts\\js\\live\\login.client.js",
@@ -806,19 +805,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Detail.cshtml",
-              "RelativeDocumentMoniker": "HospitalManagement\\Views\\Doctor\\Detail.cshtml",
-              "ToolTip": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Doctor\\Detail.cshtml",
-              "RelativeToolTip": "HospitalManagement\\Views\\Doctor\\Detail.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-06T14:55:53.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Login.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Account\\Login.cshtml",
@@ -842,7 +829,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "IAccountRepository.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\BELibrary\\Core.Entity\\Repositories\\IAccountRepository.cs",
               "RelativeDocumentMoniker": "BELibrary\\Core.Entity\\Repositories\\IAccountRepository.cs",
@@ -854,7 +841,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Views\\Account\\Index.cshtml",
               "RelativeDocumentMoniker": "HospitalManagement\\Views\\Account\\Index.cshtml",
@@ -866,7 +853,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "RecordController.cs",
               "DocumentMoniker": "E:\\LAP_TRINH_WEB_NC\\HospitalManagement\\Source\\HospitalManagement\\Controllers\\RecordController.cs",
               "RelativeDocumentMoniker": "HospitalManagement\\Controllers\\RecordController.cs",
@@ -922,8 +909,7 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Account\\Index.cshtml",
               "ViewState": "AgIAAEgAAAAAAAAAAAAiwIoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-06T15:09:16.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T15:09:16.6Z"
             },
             {
               "$type": "Document",
@@ -1487,8 +1473,7 @@
               "RelativeToolTip": "HospitalManagement\\Areas\\Admin\\Views\\Medicine\\Index.cshtml",
               "ViewState": "AgIAALEAAAAAAAAAAOBvwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T15:38:47.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T15:38:47.159Z"
             },
             {
               "$type": "Document",
